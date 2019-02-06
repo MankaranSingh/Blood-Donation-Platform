@@ -1,0 +1,35 @@
+{% extends 'HomePage.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %} Sign Up {% endblock %}
+
+
+{% block content %}
+<div style="background-image: url(https://user-images.githubusercontent.com/760010/26846953-5b5b45de-4ac9-11e7-8bb1-289b1ebc18fd.png);">
+{% for message in get_flashed_messages() %}
+<br><br>
+ <div style="margin-left: 150px; margin-right: 150px;" class="alert alert-warning">
+ <button type="button" class="close" data-dismiss="alert">&times;</button>
+ {{ message }}
+ </div>
+ {% endfor %}
+<br>
+<div class="page-header" style="margin-left: 150px;">
+	<h1> {{ user.username }} </h1>
+
+
+	<img class="img-rounded profile-thumbnail" src="{{ user.get_avtar(size = 150) }}">
+
+	<em><h3 > <u style="border-bottom:2px dotted;text-decoration: none; "> About </u></h3></em>
+	<p> {{ user.about_me }} <br> </p>
+	<em><h3 > <u style="border-bottom:2px dotted;text-decoration: none; "> Location</u></h3></em>
+	<a href="http://maps.google.com/?q={{ user.location }}+,+pesticide+store"> {{user.location}}  </a>
+	<em><h3 > <u style="border-bottom:2px dotted;text-decoration: none; "> Email </u></h3></em>
+	<p> {{ user.email }} </p>
+	
+
+
+</div>
+<br>
+</div>
+{% endblock %}

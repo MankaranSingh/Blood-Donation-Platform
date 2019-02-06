@@ -1,0 +1,148 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Blog{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='post_style.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='font-awesome.min.css') }}">
+{% endblock %}
+
+
+{% block navbar %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="navbar navbar-inverse" role="navigation" style="line-height: 60px;">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Blog</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/Home/1">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact Us</a></li>
+
+
+            </ul>
+            <div>
+            <ul class = "nav navbar-nav navbar-right ">
+                {% if current_user.is_authenticated %}
+                <li style="margin-top: 2px;"><img class="img-rounded profile-thumbnail" src="{{ current_user.get_avtar(size = 40) }}"></li>
+                <li> <a href="{{url_for('main.Profile', name = current_user.username) }}"> Profile </a> </li>
+                <li> <a href="{{ url_for('main.edit_profile') }}">Edit Profile </a> </li>
+                <li> <a href="/logout"> Logout </a> </li>
+                {% else %}
+                <li> <a href="/Login"> Login </a> </li>
+                <li> <a href="/SignUp"> Sign Up </a> </li>
+                {% endif %}
+
+        </div>
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+ {% block content %}
+
+{% for message in get_flashed_messages() %}
+ <div style="margin-left: 150px; margin-right: 150px;" class="alert alert-warning">
+ <button type="button" class="close" data-dismiss="alert">&times;</button>
+ {{ message }}
+ </div>
+ {% endfor %}
+
+
+ {% if current_user.is_authenticated %}
+
+ <div class="page-header" style="margin-left: 150px; margin-right: 150px;">
+
+ 	<h3> Welcome, {{ current_user.username }}, {{current_user.blood_group}},{{current_user.location}}, {{current_user.phone_number}},{{current_user.location}}, {{current_user.email}}, Donating: {{current_user.donate}} </h3>
+ {{ wtf.quick_form(form) }}
+
+</div>
+ {% endif %}
+
+<h1> <a href="{{ url_for('main.start') }}"> Donate Now </a> </h1>
+<h1> <a href="{{ url_for('main.donors') }}"> Request Blood </a> </h1>
+
+{% for post in posts %}
+
+<div>
+<ul class="posts" style="margin-right: 150px; margin-left: 150px;">
+ 	<li style="margin-bottom: 20px;" >
+ 		 <a  style="text-decoration: none;" href="{{ url_for('main.Profile', name=post.author.username) }}">
+	 <img class="img-rounded profile-thumbnail"
+	 src="{{ post.author.get_avtar(size=70) }}" >
+	 </a>
+
+	 <div class="post-date">{{ moment(post.timestamp).fromNow() }}</div>
+	 <div class="post-author" style="margin-left: 10px; font-size: 20px; font-style:Helvetica;">
+	 <a href="{{ url_for('main.Profile', name=post.author.username) }}" style="display: inline-block; margin-bottom: 10px; ">
+	 {{ post.author.username }}
+	 </a>
+	 </div>
+	 	<div class="post-content" style="margin-top:10px; font-size: 15px; margin-left: 0px;" >{{ post.body }}
+
+		 	<div class="post-footer" style="text-align: right;">
+		 		{% if current_user == post.author %}
+					 <a href="{{ url_for('main.post_editor', id=post.id) }}">
+					 <span class="label label-primary">Edit</span>
+					 </a>
+				{% endif %}
+				 <a href="{{ url_for('main.post_viewer', id=post.id) }}" style="text-decoration: none;">
+				 	<span class="label label-default">Permalink</span>
+				 </a>
+			</div>
+		</div>
+	 </li>
+
+</ul>
+</div>
+
+ {% endfor %}
+
+<nav style="text-align: center; margin-top: 60px;">
+<ul style="display: inline-block; text-align: center; ">
+
+	{% for num in range(1,pages+1) %}
+	<li style="display: inline-block; margin: 5px 3px 5px 3px;text-align: center; font-size: 17px">   <a href="{{ url_for('main.home', page = num )}}"> {{num}} </a>  </li>
+</ul>
+	{% endfor %}
+
+</nav>
+
+{% endblock %}
+

@@ -1,0 +1,63 @@
+{% extends 'HomePage.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %} Dashboard {% endblock %}
+
+	
+{% block content %}
+<div style="background-image: url(https://user-images.githubusercontent.com/760010/26846953-5b5b45de-4ac9-11e7-8bb1-289b1ebc18fd.png);">
+<br><br>
+{% for message in get_flashed_messages() %}
+ <div style="margin-left: 150px; margin-right: 150px; size: 70%" class="alert alert-warning">
+ <button type="button" class="close" data-dismiss="alert">&times;</button>
+ {{ message }}
+ </div>
+ {% endfor %}
+<br><br>
+<div style="margin-left: 350px; margin-right: 350px;">
+ {{ wtf.quick_form(form) }}
+</div>
+<br>
+{% for donor in donors %}
+<br>
+
+
+<div>
+<ul class="posts" style="margin-right: 350px; margin-left: 350px; background-color: #f1f0f0;padding: 5px;">
+	 <div class="row" style="margin-left: 10px; font-size: 20px; font-style:Helvetica;">
+ 	<li style="margin-bottom: 20px;" >
+ 		 <a  style="text-decoration: none;" href="{{ url_for('main.Profile', name=donor.username) }}">
+	 <img class="img-rounded profile-thumbnail"
+	 src="{{ donor.get_avtar(size=70) }}" >
+	 </a>
+
+	 
+	 <a href="{{ url_for('main.Profile', name=donor.username) }}" style="display: inline-block; margin-bottom: 10px; ">
+	 {{ donor.username }}
+	 </a>
+	 
+	 	<!-- <div class="post-content" style="margin-top:10px; font-size: 15px; margin-left: 0px;" > -->  is donating. &nbsp;&nbsp;&nbsp; Blood Group: {{donor.blood_group}} &nbsp;&nbsp;&nbsp;Age: {{donor.age}} &nbsp;&nbsp;&nbsp; Phone Number: {{donor.phone_number}} <br> Area: {{donor.location}} </br>
+
+
+		 	<div class="post-footer" style="text-align: right;">
+		 		{% if current_user == donor %}
+					 <a href="{{ url_for('main.donor_dashboard') }}">
+					 <span class="label label-primary"  style="font-size: 15px;">Edit</span>
+					 </a>
+				{% else %}
+				<a href="{{ url_for('main.send_mail', name = donor.username, group=donor.blood_group) }}" style="text-decoration: none;">
+				 	<span class="label label-default" style="font-size: 15px;">Request by E-mail</span>
+				 </a>
+				{% endif %}
+				 
+			</div>
+		</div>
+	 </li>
+
+</ul>
+</div>
+
+ {% endfor %}
+ <br><br><br>
+</div>
+{% endblock %}

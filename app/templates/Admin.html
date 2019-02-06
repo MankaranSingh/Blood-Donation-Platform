@@ -1,0 +1,20 @@
+{% extends 'HomePage.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %} Sign Up {% endblock %}
+
+
+{% block content %}
+{% for message in get_flashed_messages() %}
+ <div style="margin-left: 150px; margin-right: 150px;" class="alert alert-warning">
+ <button type="button" class="close" data-dismiss="alert">&times;</button>
+ {{ message }}
+ </div>
+ {% endfor %}
+
+<div class="page-header" style="margin-left: 150px; margin-right: 150px;">
+	<h2> Admin Profile Editor </h2>
+	{{ wtf.quick_form(form) }}
+	
+</div>
+{% endblock %}

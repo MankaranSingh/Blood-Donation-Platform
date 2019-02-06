@@ -1,0 +1,24 @@
+{% extends 'HomePage.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %} Sign Up {% endblock %}
+
+
+{% block content %}
+<div style="background-image: url(https://user-images.githubusercontent.com/760010/26846953-5b5b45de-4ac9-11e7-8bb1-289b1ebc18fd.png);">
+{% for message in get_flashed_messages() %}
+<br><br><br><br>
+ <div style="margin-left: 150px; margin-right: 150px;" class="alert alert-warning">
+ <button type="button" class="close" data-dismiss="alert">&times;</button>
+ {{ message }}
+ </div>
+ {% endfor %}
+
+<div class="page-header" style="margin-left: 450px; margin-right: 450px;">
+	<h2> Edit Profile </h2>
+	{{ wtf.quick_form(form) }}
+	
+</div>
+<br><br>
+</div>
+{% endblock %}

@@ -1,0 +1,357 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+
+
+
+
+{% block head %}
+
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<title>BLOOD</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
+	<script src="{{ url_for('static', filename='js/modernizr.js') }}"></script>
+	<!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+{% endblock %}
+</head>
+<body style="font-family: BenchNine; font-size: 25px">
+	
+
+	{% block navbar %}
+
+	<!-- ====================================================
+	header section -->
+	<header class="top-header" style="background: #252424">
+		<div class="container">
+			<div class="row" style="margin-top: -62px">
+				<div class="col-xs-5 header-logo">
+					
+				</div>
+
+				<div class="col-md-7">
+					<nav class="navbar navbar-default">
+					  <div class="container-fluid nav-bar">
+					    <!-- Brand and toggle get grouped for better mobile display -->
+					    <div class="navbar-header">
+					      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					        <span class="sr-only">Toggle navigation</span>
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+					      </button>
+					    </div>
+
+					    <!-- Collect the nav links, forms, and other content for toggling -->
+					    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					      
+					      <ul class="nav navbar-nav navbar-right">
+					     <!--  <li style="float: left;">	<a href="index.html"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="" class="img-responsive logo"></a> </li> -->
+					     <br>
+					        <li><a class="menu" href="/Home">Home</a></li>
+
+					        {% if current_user.is_authenticated %}
+
+					        <li> <a href="{{url_for('main.Profile', name = current_user.username) }}"> Profile </a> </li>
+                            <li> <a href="{{ url_for('main.edit_profile') }}">Edit Profile </a> </li>
+                			<li> <a href="/logout"> Logout </a> </li>
+
+                			{% else %}
+
+                			<li><a href="{{ url_for('main.login') }}" >Login</a></li>
+					        <li><a href="{{ url_for('main.sign_up')}}" >Sign Up</a></li>
+
+					        {% endif %}
+					        	
+					      </ul>
+					    </div><!-- /navbar-collapse -->
+					  </div><!-- / .container-fluid -->
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header> <!-- end of header area -->
+-->
+	{% endblock %}
+
+<!--
+{% for message in get_flashed_messages() %}
+	
+ <div style="margin-left: 150px; margin-right: 150px; size: 70%;" class="alert alert-warning">
+ <button type="button" class="close" data-dismiss="alert">&times;</button>
+ {{ message }}
+ </div>
+{% endfor %}
+-->
+{% block content %}
+	
+
+
+	<section class="slider" id="home">
+		<div class="container-fluid"   style="margin-top: -40px;">
+			<div class="row"  style="margin-top: -65px;">
+			    <div id="carouselHacked" class="carousel slide carousel-fade" data-ride="carousel">
+					<div class="header-backup"></div>
+			        <!-- Wrapper for slides -->
+			        <div class="carousel-inner" role="listbox">
+			            <div class="item active">
+			            	<img style="" src="{{ url_for('static', filename='img/slide-three.jpg') }}" alt="">
+			                <div class="carousel-caption">
+		               			<h1>connecting</h1>
+		               			<p>blood donors &amp; those in need</p>
+		               			<br><br><br>
+		               			<a href="{{ url_for('main.donor_dashboard') }}"><button class="btn btn-primary"> donate now ! </button></a>
+			                </div>
+			            </div>
+			            <div class="item">
+			            	<img style="" src="{{ url_for('static', filename='img/slide-two.jpg') }}" alt="">
+			                <div class="carousel-caption">
+		               			<h1>connecting</h1>
+		               			<p>blood donors &amp; those in need</p>
+		               			<br><br><br>
+		               			<a href="{{ url_for('main.donor_dashboard') }}"><button class="btn btn-primary"> donate now ! </button></a>
+			                </div>
+			            </div>
+			            <div class="item">
+			                <img style="" src="{{ url_for('static', filename='img/slide-one.jpg') }}" alt="">
+			                <div class="carousel-caption">
+		               			<h1>connecting</h1>
+		               			<p>blood donors &amp; those in need</p>
+		               			<br><br><br>
+		               			<a href="{{ url_for('main.donor_dashboard') }}"><button class="btn btn-primary"> donate now ! </button></a>
+			                </div>
+			            </div>
+			            <div class="item">
+			            	<img style="" src="{{ url_for('static', filename='img/slide-four.jpg') }}" alt="">
+			                <div class="carousel-caption">
+		               			<h1>connecting</h1>
+		               			<p>blood donors &amp; those in need</p>
+		               			<br><br><br>
+		               			<a href="{{ url_for('main.donor_dashboard') }}"><button class="btn btn-primary"> donate now ! </button></a>
+			                </div>
+			            </div>
+			        </div>
+			        <!-- Controls -->
+			        <a class="left carousel-control" href="#carouselHacked" role="button" data-slide="prev">
+			            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			            <span class="sr-only">Previous</span>
+			        </a>
+			        <a class="right carousel-control" href="#carouselHacked" role="button" data-slide="next">
+			            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			            <span class="sr-only">Next</span>
+			        </a>
+			    </div>
+			</div>
+		</div>
+	</section><!-- end of slider section -->
+
+	<!-- about section -->
+	<section class="about text-center" id="about" style="">
+		<div class="container">
+			<div class="row">
+				<h2>about us</h2>
+				<h4>Connecting blood donors to those in need. Hoping to make a difference ! </h4>
+				<h4>CHEERS !</h4>
+
+			
+				<div class="col-md-4 col-sm-6">
+					<div class="single-about-detail clearfix">
+						<div class="about-img">
+							<img class="img-responsive" src="{{ url_for('static',filename='img/item1.jpg') }}" alt="">
+						</div>
+						<div class="about-details">
+							<div class="pentagon-text">
+								<div style="font-size: 50px; color: red;" class="fas fa-question"></div>
+							</div>
+							<h3>Why Donate Blood</h3>
+							<p>Blood is the part of life that is given to those who need it by those who have the resource to satisfy the need. The love of fellow human and a desire to share something of oneself is what singles out a blood donor from the others. Emergencies occur every minute. For each patient requiring blood, it is an emergency and the patients could have set back if blood is not available.</p>
+							<h3>The Need</h3>
+							<p>Under normal circumstances, every two seconds someone needs a blood transfusion. Blood transfusions are used for trauma victims - due to accidents and burns - heart surgery, organ transplants, women with complications during childbirth, newborns and premature babies, and patients receiving treatment for leukemia, cancer or other diseases, such as sickle cell disease and thalassemia.</p>
+						</div>
+					</div>
+				</div>
+			
+				<div class="col-md-4 col-sm-6">
+					<div class="single-about-detail">
+						<div class="about-img">
+							<img class="img-responsive" src="{{ url_for('static',filename='img/item2.jpg') }}" alt="">
+						</div>
+						<div class="about-details">
+							<div class="pentagon-text">
+								<div style="font-size: 50px; color: red;" class="fas fa-comment-medical"></div>
+							</div>
+
+							<h3>Tips on Donating</h3>
+							<p>Please have a good meal at least 3 hours before donating blood.
+Please accept the snacks offered after the donation. It is recommended to have a good meal later.
+Please avoid smoking on the day before donating. One can smoke 3 hours after donation.
+One is not eligible to donate blood if you have consumed alcohol 48 hours before donation.</p>
+
+<h3>Some Misconceptions</h3>
+<p> You will not feel drained or tired if you continue to drink fluids and have a good meal.
+You can resume your normal activities after donating blood, though you are asked to refrain from exercise or heavy weight lifting for twelve hours after donation. </p><p>
+Donating blood will not leave you low of blood; in fact you will still have surplus blood after the donation.
+While donating blood you will not feel any pain.
+You will not faint or feel uncomfortable after donating blood. This is a common misconception.
+You will not get AIDS if you donate blood.</p>
+						</div>
+					</div>
+				</div>
+			
+				<div class="col-md-4 col-sm-6">
+					<div class="single-about-detail">
+						<div class="about-img">
+							<img class="img-responsive" src="{{ url_for('static',filename='img/item3.jpg') }}" alt="">
+						</div>
+						<div class="about-details">
+							<div class="pentagon-text">
+								<div style="font-size: 50px; color: red;" class="fas fa-tint"></div>
+							</div>
+							<h3>Most Needed Blood</h3>
+							<p>All blood types are needed. Common blood types are needed because there are many patients with them. Less common blood types are needed because there are fewer donors to give them.</p> <h3>Universal Recepient</h3><p> However, people with O- blood are particularly in demand because they are the "universal donor." It means that people of all blood types can receive O- blood safely, so it is used during life-threatening emergencies or when the matching blood type is in short supply. </p><h3>Universal Recepient</h3><p> AB types are universal recipients. This relationship is reversed for plasma products. AB type plasma can be transfused to all patients, while O- types are the universal plasma recipients. Therefore, all types are really needed!</p>
+							
+						</div>
+					</div>
+				</div>
+		
+			</div>
+		</div>
+	</section><!-- end of about section -->
+
+
+	<!-- service section starts here -->
+	<section class="service text-center" id="service">
+		<div class="container">
+			<div class="row">
+				<h2>our services</h2>
+				<h3>FOLLOWING ARE THE SERVICES OFFERED BY THIS PORTAL <br> WE AT 'LIFE LINE' HELP TO CONNECT PEOPLE WHO ARE 
+				WILLING TO SAVE LIVES AND THOSE WHO ARE SUFFERING BECAUSE OF THE NON AVAILABILITY OF BLOOD DONORS. <br> 
+				We belive that millions of lives can be saved provided some availability of a right platform for local areas.</h3>
+
+				<br><br><br>
+			
+			<a href="{{ url_for('main.donor_dashboard') }}">	
+				<div class="col-md-4 col-sm-6">
+					<div class="single-service">
+						<div class="single-service-img">
+							<div class="service-img">
+								<div style="font-size: 115px;color:white;" class="fas fa-user-plus"></div>
+							</div>
+						</div>
+						<h3>Donor Portal</h3>
+					</div>
+				</div>
+			</a>
+				
+			<a href="{{ url_for('main.request_blood', blood_group ='x') }}">	
+				<div class="col-md-4 col-sm-6">
+					<div class="single-service">
+						<div class="single-service-img">
+							<div class="service-img">
+								<div style="font-size: 115px;color:white;" class="fa fa-tint"></div>
+							</div>
+						</div>
+						<h3>Request Blood</h3>
+					</div>
+				</div>
+			</a>
+			<a href="https://www.google.com/maps/search/blood+patiala/@30.4682699,76.2510991,11z/data=!3m1!4b1" target="_blank">
+				<div class="col-md-4 col-sm-6">
+					<div class="single-service">
+						<div class="single-service-img">
+							<div class="service-img">
+								<div style="font-size: 115px; color:white;" class="fas fa-map-marker-alt"></div>
+							</div>
+						</div>
+						<h3>Locate Donation Centre</h3>
+					</div>
+				</div>
+			</a>
+				
+			</div>
+		</div>
+	</section><!-- end of service section -->
+
+
+	<!-- map section -->
+	<div class="api-map" id="contact">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12 map" id="map"></div>
+			</div>
+		</div>
+	</div><!-- end of map section -->
+
+	<!-- contact section starts here -->
+	<section class="contact">
+		<div class="container">
+			<div class="row">
+				<div class="contact-caption clearfix">
+					<div class="contact-heading text-center">
+						<h2>contact us</h2>
+					</div>
+					<div class="col-md-5 contact-info text-left">
+						<h3>contact information</h3>
+						<div class="info-detail">
+							
+							<ul><li><i class="fa fa-map-marker"></i><span>Address:</span> Rotaract Club, Thapar University, Patiala </li></ul>
+							<ul><li><i class="fa fa-phone"></i><span>Phone:</span> 9898989898 </li></ul>
+							<ul><li><i class="fa fa-fax"></i><span>Fax:</span> 9898989898 </li></ul>
+							<ul><li><i class="fa fa-envelope"></i><span>Email:</span> info@rotaract.com</li></ul>
+						</div>
+					</div>
+					<div class="col-md-6 col-md-offset-1 contact-form">
+						<h3>leave us a message</h3>
+
+						<form class="form">
+							<input class="name" type="text" placeholder="Name">
+							<input class="email" type="email" placeholder="Email">
+							<input class="phone" type="text" placeholder="Phone No:">
+							<textarea class="message" name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+							<input class="submit-btn" type="submit" value="SUBMIT">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section><!-- end of contact section -->
+
+	<!-- footer starts here -->
+	<footer class="footer clearfix"  style="background: #252424">
+		<div class="container">
+			<div class="row">
+				
+				<div class="row" style="padding: 10px; text-align: center; color: #fd5c5c;">
+					<div style="font-size: 40px" class="fab fa-facebook-f"></div> &nbsp;&nbsp;&nbsp;
+					<div style="font-size: 40px" class="fab fa-twitter"></div> &nbsp;&nbsp;&nbsp;
+					<div style="font-size: 40px" class="fab fa-skype"></div> &nbsp;&nbsp;&nbsp;
+				</div>
+			</div>
+		</div>
+	</footer>
+{% endblock %}
+{% block scripts %}
+	<!-- script tags
+	============================================================= -->
+	<script src="{{ url_for('static',filename='js/jquery-2.1.1.js') }}"></script>
+	<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	<script src="{{ url_for('static',filename='js/gmaps.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/smoothscroll.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/custom.js') }}"></script>
+{% endblock %}
+</body>
+</html>

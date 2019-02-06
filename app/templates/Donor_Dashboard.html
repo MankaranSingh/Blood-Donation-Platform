@@ -1,0 +1,45 @@
+{% extends 'HomePage.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %} Dashboard {% endblock %}
+
+
+{% block content %}
+<div style="background-image: url(https://user-images.githubusercontent.com/760010/26846953-5b5b45de-4ac9-11e7-8bb1-289b1ebc18fd.png);">
+{% for message in get_flashed_messages() %}
+ <div style="margin-left: 150px; margin-right: 150px; size: 70%" class="alert alert-warning">
+ <button type="button" class="close" data-dismiss="alert">&times;</button>
+ {{ message }}
+ </div>
+ {% endfor %}
+
+<br><br><br><br>
+<div style="text-align: center;">
+
+
+<h1 style="font-size: 75px;">“There is no great joy than saving a soul.”</h1>
+
+
+
+
+{% if current_user.donate %}
+ <h1 > You Are Now Donating. </h1>	
+
+ <h1 > <a href="{{ url_for('main.stop') }}"> <button class="btn btn-lg btn-danger"> Take a break </button> </a> </h1>
+
+{% else %}
+
+<h1  > <a href="{{ url_for('main.start') }}"> <button class="btn btn-lg btn-primary"> Start Donating </button> </a>
+
+{% endif %}
+
+
+</div>
+<br><br>
+
+<div style="text-align: center;">
+<iframe src="http://127.0.0.1:8050/" style="width: 50%; height: 470px;"></iframe>
+</div>
+<br><br><br>
+</div>
+{% endblock %}
