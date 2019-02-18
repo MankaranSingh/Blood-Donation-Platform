@@ -25,7 +25,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 Run the following to get the web app up and running on your ``localhost machine``:
 
-- ``run.pu``
+- ``run.py``
 - ``Dash_plotting_server.py`` (For displaying of stats)
 
 Thats it !
