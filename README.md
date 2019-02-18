@@ -4,20 +4,20 @@ Most blood donation platforms connect people to blood banks, but this one connec
 
 ## UI
 
-https://github.com/MankaranSingh/Blood-Donation-Platform/blob/master/SS1.png
+![alt text](https://github.com/MankaranSingh/Blood-Donation-Platform/blob/master/SS1.png)
 
-https://github.com/MankaranSingh/Blood-Donation-Platform/blob/master/SS2.png
+![alt text](https://github.com/MankaranSingh/Blood-Donation-Platform/blob/master/SS2.png)
 
 ## Donors Page who are currently active and donating.
 
-https://github.com/MankaranSingh/Blood-Donation-Platform/blob/master/SS3.png
+![alt text](https://github.com/MankaranSingh/Blood-Donation-Platform/blob/master/SS3.png)
 
 ## Stats 
 
-https://github.com/MankaranSingh/Blood-Donation-Platform/blob/master/SS4.png
+![alt text](https://github.com/MankaranSingh/Blood-Donation-Platform/blob/master/SS4.png)
 ## Sample Email 
 
-https://github.com/MankaranSingh/Blood-Donation-Platform/blob/master/SS45.png
+![alt text](https://github.com/MankaranSingh/Blood-Donation-Platform/blob/master/SS45.png)
 
 ## Getting Started
 
