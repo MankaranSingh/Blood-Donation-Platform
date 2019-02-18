@@ -4,21 +4,20 @@ Most blood donation platforms connect people to blood banks, but this one connec
 
 ## UI
 
-![alt text](https://github.com/MankaranSingh/AQI-Management-System/blob/master/SS1.png)
+https://github.com/MankaranSingh/Blood-Donation-Platform/blob/master/SS1.png
 
-![alt text](https://github.com/MankaranSingh/AQI-Management-System/blob/master/SS2.png)
+https://github.com/MankaranSingh/Blood-Donation-Platform/blob/master/SS2.png
 
 ## Donors Page who are currently active and donating.
 
-![alt text](https://github.com/MankaranSingh/AQI-Management-System/blob/master/SS3.png)
+https://github.com/MankaranSingh/Blood-Donation-Platform/blob/master/SS3.png
 
 ## Stats 
 
-![alt text](https://github.com/MankaranSingh/AQI-Management-System/blob/master/SS3.png)
-
+https://github.com/MankaranSingh/Blood-Donation-Platform/blob/master/SS4.png
 ## Sample Email 
 
-![alt text](https://github.com/MankaranSingh/AQI-Management-System/blob/master/SS3.png)
+https://github.com/MankaranSingh/Blood-Donation-Platform/blob/master/SS45.png
 
 ## Getting Started
 
